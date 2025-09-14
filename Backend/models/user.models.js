@@ -1,4 +1,3 @@
-import { verify } from "jsonwebtoken";
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
@@ -35,7 +34,7 @@ const userSchema = new mongoose.Schema({
     },
     last_login_date: {
         type: Date,
-        default: "",
+        default: null,
     },
     status: {
         type: String,
@@ -44,19 +43,19 @@ const userSchema = new mongoose.Schema({
     },
     address_details: [
         {
-            type: mongoodr.Schema.ObjectId,
+            type:  mongoose.Schema.Types.ObjectId,
             ref: 'address'
         },
     ],
     shopping_cart: [
         {
-            type: mongoodr.Schema.ObjectId,
+            type:  mongoose.Schema.Types.ObjectId,
             ref: 'cartProduct'
         },
     ],
     orderHistory: [
         {
-            type: mongoodr.Schema.ObjectId,
+            type:  mongoose.Schema.Types.ObjectId,
             ref: 'order'
         },
     ],
@@ -70,7 +69,7 @@ const userSchema = new mongoose.Schema({
     },
 
     role : {
-        type : "String" ,
+        type : String ,
         enum : ["USER" , "ADMIN"],
         default : "USER"
     }
